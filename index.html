@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            font-size: 20vw;
+            text-align: center;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+        }
+        #describer {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div >
+        <button onclick="time = 180; isPublicSpeaking=false; startTimer();" >3 min</button>
+        <button onclick="time = 120; isPublicSpeaking=false; startTimer();" >2 min</button>
+        <button onclick="time = 420; isPublicSpeaking=true; startTimer();" >Public Speaking</button>
+        <span id="describer">running...</span>
+    </div>
+
+    <h1 id="holder">
+        Time
+    </h1>
+   
+    <script>
+        let time = 0;
+        let isPublicSpeaking = false;
+        let intervalId;
+    
+        function startTimer() {
+            clearInterval(intervalId);
+            intervalId = setInterval(countdown, 1000);
+            document.getElementById('describer').style.display = 'block';
+        }
+        
+        function countdown() {
+            const holder = document.getElementById('holder');
+            if (time === 180 && isPublicSpeaking=== false ) {
+                holder.innerHTML = '3 min';
+            } else if (time === 175) {
+                holder.innerHTML = 'Time';
+            } else if (time === 120) {
+                holder.innerHTML = '2 min';
+            } else if (time === 115) {
+                holder.innerHTML = 'Time';
+            } else if (time === 60) {
+                holder.innerHTML = '1 min';
+            } else if (time === 55) {
+                holder.innerHTML = 'Time';
+            } else if (time === 30) {
+                holder.innerHTML = '30 sec';
+            } else if (time === 25) {
+                holder.innerHTML = 'Time';
+            } else if (time === 0) {
+                holder.innerHTML = 'STOP';
+                clearInterval(intervalId);
+                document.getElementById('describer').style.display = 'none';
+            }
+            time--;
+        }
+    </script>
+    
+    
+</body>
+</html>
